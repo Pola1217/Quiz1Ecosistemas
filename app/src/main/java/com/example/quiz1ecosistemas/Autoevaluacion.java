@@ -27,7 +27,7 @@ public class Autoevaluacion extends AppCompatActivity {
 
         nextBtn3 = findViewById(R.id.next3);
         endBtn = findViewById(R.id.end);
-        opc4 = findViewById(R.id.check5);
+        opc4 = findViewById(R.id.check4);
         opc5 = findViewById(R.id.check5);
         opc6 = findViewById(R.id.check6);
 
@@ -69,8 +69,8 @@ public class Autoevaluacion extends AppCompatActivity {
 
                         PuntosT = ""+puntosA;
 
-                        String yaTodo = total+":"+PuntosT;
-                        Puntaje.edit().putString("todosLosPuntos", yaTodo).apply();
+                        String totalFinal = total+":"+PuntosT;
+                        Puntaje.edit().putString("todosLosPuntos", totalFinal).apply();
 
                         Intent i = new Intent(this, MainActivity.class);
 

@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
         estudiantes = findViewById(R.id.students);
         registroBtn = findViewById(R.id.registro);
 
-        //clic boton registrar
         registroBtn.setOnClickListener(
                 (view) -> {
                     Intent i = new Intent(this, Registros.class);
@@ -34,9 +33,6 @@ public class MainActivity extends AppCompatActivity {
         );
     }
 
-
-
-    //antes que la actividad sea visible
     @Override
     protected void onResume() {
         super.onResume();
@@ -56,16 +52,16 @@ public class MainActivity extends AppCompatActivity {
         String[] nombres = nombre.split(":");
         String[] puntos = Ptotales.split(":");
 
-        //esta es una lista erronea pero que muestra que si guarda los nombres y codigos y que al hacerlo
+        //esta es una lista erronea pero que muestra que si guarda las variables y que al hacerlo
         //no pueden repetir ni nombre ni codigo
         lista = nombres + "    " + puntos;
         estudiantes.setText(lista);
 
         //lista que por alguna razon ya no funciono
-        for (int i = 0; i < nombres.length; i++) {
-            contador = i;
+        /*for (int i = 0; i < nombres.length; i++) {
+           // contador = i;
             estudiantes.append(nombres[contador] + "     " + puntos[contador] + "\n");
-        }
+        }*/
     }
     }
 
