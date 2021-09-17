@@ -50,7 +50,7 @@ public class Preparacion extends AppCompatActivity {
                         Intent i = new Intent(this, Autoevaluacion.class);
 
                         //pPrep
-                        i.putExtra("puntoN", puntosP);
+                        i.putExtra("puntoP", puntosP);
 
                         startActivity(i);
                         finish();

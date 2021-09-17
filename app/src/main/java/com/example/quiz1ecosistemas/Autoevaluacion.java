@@ -58,19 +58,19 @@ public class Autoevaluacion extends AppCompatActivity {
                         puntosA += 0;
                     }
 
-                    puntosA += puntosT;;
+                    puntosA += puntosT;
 
 
                     if(opc4.isChecked() == true || opc5.isChecked() == true || opc6.isChecked() == true ){
 
                         //shared preferences de los puntajes de los sintomas
-                        SharedPreferences preferencesPuntaje = getSharedPreferences("puntos", MODE_PRIVATE);
-                        total = preferencesPuntaje.getString("todosLosPuntos","");
+                        SharedPreferences Puntaje = getSharedPreferences("puntaje", MODE_PRIVATE);
+                        total = Puntaje.getString("todosLosPuntos","");
 
                         PuntosT = ""+puntosA;
 
                         String yaTodo = total+":"+PuntosT;
-                        preferencesPuntaje.edit().putString("todosLosPuntos", yaTodo).apply();
+                        Puntaje.edit().putString("todosLosPuntos", yaTodo).apply();
 
                         Intent i = new Intent(this, MainActivity.class);
 

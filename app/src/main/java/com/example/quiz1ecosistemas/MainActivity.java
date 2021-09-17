@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -12,8 +13,8 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView estudiantes;
     private Button registroBtn;
-    private String nombre, code, Ptotales;
-    private int contador;
+    private String nombre, code, Ptotales, lista;
+    private int contador = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,10 +22,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //referenciar
-        registroBtn = findViewById(R.id.registro);
         estudiantes = findViewById(R.id.students);
-
-        //estudiantes.setMovementMethod(new ScrollingMovementMethod());
+        registroBtn = findViewById(R.id.registro);
 
         //clic boton registrar
         registroBtn.setOnClickListener(
@@ -43,28 +42,30 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
         //shared de los puntajes
-        SharedPreferences preferencesPuntaje = getSharedPreferences("puntos",MODE_PRIVATE);
-        Ptotales = preferencesPuntaje.getString("todosLosPuntos","");
+        SharedPreferences preferencesPuntaje = getSharedPreferences("puntaje", MODE_PRIVATE);
+        Ptotales = preferencesPuntaje.getString("todosLosPuntos", "");
 
         //shared de los estudiantes
-        SharedPreferences preferencesUser = getSharedPreferences("user",MODE_PRIVATE);
-        nombre = preferencesUser.getString("nombres","");
-        code = preferencesUser.getString("codigos","");
+        SharedPreferences preferencesUser = getSharedPreferences("user", MODE_PRIVATE);
+        nombre = preferencesUser.getString("nombre", "");
+        code = preferencesUser.getString("codigo", "");
 
 
         //variables estudiantes
-        String[] numbers = code.split(":");
+        String[] codigos = code.split(":");
         String[] nombres = nombre.split(":");
         String[] puntos = Ptotales.split(":");
 
-        estudiantes.setText(" ");
+        //esta es una lista erronea pero que muestra que si guarda los nombres y codigos y que al hacerlo
+        //no pueden repetir ni nombre ni codigo
+        lista = nombres + "    " + puntos;
+        estudiantes.setText(lista);
 
-        //
-        for(int i=0; i < nombres.length; i++) {
+        //lista que por alguna razon ya no funciono
+        for (int i = 0; i < nombres.length; i++) {
             contador = i;
-            estudiantes.append(nombres[contador] + "     " +puntos[contador] + "\n");
-
+            estudiantes.append(nombres[contador] + "     " + puntos[contador] + "\n");
         }
-
     }
-}
+    }
+

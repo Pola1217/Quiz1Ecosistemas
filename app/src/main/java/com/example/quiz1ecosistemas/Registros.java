@@ -30,8 +30,8 @@ public class Registros extends AppCompatActivity {
 
                     SharedPreferences PUser = getSharedPreferences("user",MODE_PRIVATE);
 
-                    String nombre = PUser.getString("nombree", "");
-                    String codigo = PUser.getString("codigoo","");
+                    String nombre = PUser.getString("nombre", "");
+                    String codigo = PUser.getString("codigo","");
 
                     names = name.getText().toString().trim();
                     codes = code.getText().toString().trim();
@@ -39,21 +39,21 @@ public class Registros extends AppCompatActivity {
 
                     if(codes.isEmpty()==true){
 
-                        Toast.makeText(this, "Llene los datos", Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, " Completar datos", Toast.LENGTH_LONG).show();
 
                     }else{
 
                         if(codigo.contains(codes)){
 
-                            Toast.makeText(this, "Usario ya registrado", Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, "Usario registrado", Toast.LENGTH_LONG).show();
 
                         }else{
 
                             String nombres = nombre+":"+names;
                             String codigos = codigo+":"+codes;
 
-                            PUser.edit().putString("nombres",nombres).apply();
-                            PUser.edit().putString("codigos",codigos).apply();
+                            PUser.edit().putString("nombre",nombres).apply();
+                            PUser.edit().putString("codigo",codigos).apply();
 
                             Intent i = new Intent(this, Preparacion.class);
                             startActivity(i);
